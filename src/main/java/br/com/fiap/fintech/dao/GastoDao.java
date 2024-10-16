@@ -19,17 +19,16 @@ public class GastoDao {
 
     // Método para cadastrar um gasto
     public void cadastrar(Gasto gasto) throws SQLException {
-        PreparedStatement stm = conexao.prepareStatement(
-                "INSERT INTO tb_gasto (id_gasto, id_usuario, valor, data) " +
-                        "VALUES (seq_gasto.nextval, ?, ?, ?)"
-        );
+        String sql = "INSERT INTO tb_gasto (id_gasto, id_usuario, valor, data) VALUES (seq_gasto.nextval, ?, ?, ?)";
 
-        stm.setInt(1, gasto.getIdUsuario());
-        stm.setDouble(2, gasto.getValor());
-        stm.setString(3, gasto.getData());
-
-        stm.executeUpdate();
+        try (PreparedStatement stm = conexao.prepareStatement(sql)) {
+            stm.setInt(1, gasto.getIdUsuario());
+            stm.setDouble(2, gasto.getValor());
+            stm.setString(3, gasto.getData());
+            stm.executeUpdate();
+        }
     }
+
 
     public void fecharConexao() throws SQLException {
         conexao.close();
