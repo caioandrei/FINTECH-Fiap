@@ -17,6 +17,7 @@ public class RegisterRecebimentoView {
             System.err.println("Erro ao acessar o banco de dados: " + e.getMessage());
         }
     }
+
     private static void cadastrarRecebimentos(RecebimentoDao dao) {
         try {
             Recebimento recebimento1 = new Recebimento(25, 150.75, "2024-10-16", "Salário", "Mensal");
