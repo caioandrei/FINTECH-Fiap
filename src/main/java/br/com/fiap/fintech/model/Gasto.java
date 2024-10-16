@@ -5,20 +5,26 @@ public class Gasto {
     private int idUsuario;
     private double valor;
     private String data;
+    private String categoria;
+    private String recorrencia;
 
     // Construtor
-    public Gasto(int idGasto, int idUsuario, double valor, String data) {
+    public Gasto(int idGasto, int idUsuario, double valor, String data, String categoria, String recorrencia) {
         this.idGasto = idGasto;
         this.idUsuario = idUsuario;
         this.valor = valor;
         this.data = data;
+        this.categoria = categoria;
+        this.recorrencia = recorrencia;
     }
 
     // Construtor sem 'ID' para Cadastro de Gastos
-    public Gasto(int idUsuario, double valor, String data) {
-        this.idUsuario = idUsuario;
+    public Gasto(int idGasto, double valor, String data, String categoria, String recorrencia) {
+        this.idGasto = idGasto;
         this.valor = valor;
         this.data = data;
+        this.categoria = categoria;
+        this.recorrencia = recorrencia;
     }
 
     // Getters e Setters
@@ -52,5 +58,21 @@ public class Gasto {
 
     public void setData(String data) {
         this.data = data;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public String getRecorrencia() {
+        return recorrencia;
+    }
+
+    public void setRecorrencia(String recorrencia) {
+        this.recorrencia = recorrencia;
     }
 }

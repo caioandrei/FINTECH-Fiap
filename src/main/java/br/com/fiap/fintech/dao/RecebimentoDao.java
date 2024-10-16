@@ -19,13 +19,15 @@ public class RecebimentoDao {
 
     // Método para cadastrar um Recebimento
     public void cadastrar(Recebimento recebimento) throws SQLException {
-        String sql = "INSERT INTO TB_RECEBIMENTO (id_usuario, valor, data) VALUES (?, ?, TO_DATE(?, 'YYYY-MM-DD'))";
+        String sql = "INSERT INTO TB_RECEBIMENTO (id_usuario, valor, data, categoria, recorrencia) VALUES (?, ?, TO_DATE(?, 'YYYY-MM-DD'), ?, ?)";
 
         try (PreparedStatement stm = conexao.prepareStatement(sql)) {
 
             stm.setInt(1, recebimento.getIdUsuario());
             stm.setDouble(2, recebimento.getValor());
             stm.setString(3, recebimento.getData());
+            stm.setString(4, recebimento.getCategoria());
+            stm.setString(5, recebimento.getRecorrencia());
 
             stm.executeUpdate();
         }
@@ -37,7 +39,7 @@ public class RecebimentoDao {
     // Implementação do método listar para buscar todos os recebimentos
     public List<Recebimento> listar() throws SQLException {
         List<Recebimento> recebimentos = new ArrayList<>();
-        String sql = "SELECT id_recebimento, id_usuario, valor, data FROM tb_recebimento";
+        String sql = "SELECT id_recebimento, id_usuario, valor, data, categoria, recorrencia FROM tb_recebimento";
 
         try (PreparedStatement stm = conexao.prepareStatement(sql);
              ResultSet rs = stm.executeQuery()) {
@@ -47,8 +49,10 @@ public class RecebimentoDao {
                 int usuario = rs.getInt("id_recebimento");
                 double valor = rs.getDouble("valor");
                 String data = rs.getString("data");
+                String categoria = rs.getString("categoria");
+                String recorrencia = rs.getString("recorrencia");
 
-                Recebimento recebimento = new Recebimento(id, usuario, valor, data);
+                Recebimento recebimento = new Recebimento(id, usuario, valor, data, categoria, recorrencia);
                 recebimentos.add(recebimento);
             }
         }

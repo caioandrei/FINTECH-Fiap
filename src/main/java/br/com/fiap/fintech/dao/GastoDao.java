@@ -19,18 +19,19 @@ public class GastoDao {
 
     // Método para cadastrar um gasto
     public void cadastrar(Gasto gasto) throws SQLException {
-        String sql = "INSERT INTO tb_gasto (id_gasto, id_usuario, valor, data) VALUES (seq_gasto.nextval, ?, ?, ?)";
+        String sql = "INSERT INTO tb_gasto (id_gasto, id_usuario, valor, data, categoria, recorrencia) VALUES (?, ?, TO_DATE(?, 'YYYY-MM-DD'), ?, ?)";
 
         try (PreparedStatement stm = conexao.prepareStatement(sql)) {
 
             stm.setInt(1, gasto.getIdUsuario());
             stm.setDouble(2, gasto.getValor());
             stm.setString(3, gasto.getData());
+            stm.setString(4, gasto.getCategoria());
+            stm.setString(5, gasto.getRecorrencia());
 
             stm.executeUpdate();
         }
     }
-
 
     public void fecharConexao() throws SQLException {
         conexao.close();
@@ -39,7 +40,7 @@ public class GastoDao {
     // Implementação do método listar para buscar todos os gastos
     public List<Gasto> listar() throws SQLException {
         List<Gasto> gastos = new ArrayList<>();
-        String sql = "SELECT id_gasto, id_usuario, valor, data FROM tb_gasto";
+        String sql = "SELECT id_gasto, id_usuario, valor, data, categoria, recorrencia FROM tb_gasto";
 
         try (PreparedStatement stm = conexao.prepareStatement(sql);
              ResultSet rs = stm.executeQuery()) {
@@ -49,8 +50,10 @@ public class GastoDao {
                 int usuario = rs.getInt("id_usuario");
                 double valor = rs.getDouble("valor");
                 String data = rs.getString("data");
+                String categoria = rs.getString("categoria");
+                String recorrencia = rs.getString("recorrencia");
 
-                Gasto gasto = new Gasto(id, usuario, valor, data);
+                Gasto gasto = new Gasto(id, usuario, valor, data, categoria, recorrencia);
                 gastos.add(gasto);
             }
         }

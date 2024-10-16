@@ -20,11 +20,11 @@ public class RegisterGastoView {
 
     private static void cadastrarGastos(GastoDao dao) {
         try {
-            Gasto gasto1 = new Gasto(25, 150.75, "2024-10-16");
-            Gasto gasto2 = new Gasto(25, 200.00, "2024-10-17");
-            Gasto gasto3 = new Gasto(25, 50.25, "2024-10-18");
-            Gasto gasto4 = new Gasto(25, 300.00, "2024-10-19");
-            Gasto gasto5 = new Gasto(25, 100.75, "2024-10-20");
+            Gasto gasto1 = new Gasto(25, 150.75, "2024-10-16", "Salário", "Mensal");
+            Gasto gasto2 = new Gasto(25, 200.00, "2024-10-17", "Salário", "Mensal");
+            Gasto gasto3 = new Gasto(25, 50.25, "2024-10-18", "Salário", "Mensal");
+            Gasto gasto4 = new Gasto(25, 300.00, "2024-10-19", "Salário", "Mensal");
+            Gasto gasto5 = new Gasto(25, 100.75, "2024-10-20", "Salário", "Mensal");
 
             dao.cadastrar(gasto1);
             dao.cadastrar(gasto2);
