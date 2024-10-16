@@ -22,9 +22,11 @@ public class GastoDao {
         String sql = "INSERT INTO tb_gasto (id_gasto, id_usuario, valor, data) VALUES (seq_gasto.nextval, ?, ?, ?)";
 
         try (PreparedStatement stm = conexao.prepareStatement(sql)) {
+
             stm.setInt(1, gasto.getIdUsuario());
             stm.setDouble(2, gasto.getValor());
             stm.setString(3, gasto.getData());
+
             stm.executeUpdate();
         }
     }
