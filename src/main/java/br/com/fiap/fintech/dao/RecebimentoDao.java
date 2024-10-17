@@ -39,20 +39,19 @@ public class RecebimentoDao {
     // Implementação do método listar para buscar todos os recebimentos
     public List<Recebimento> listar() throws SQLException {
         List<Recebimento> recebimentos = new ArrayList<>();
-        String sql = "SELECT id_recebimento, id_usuario, valor, data, categoria, recorrencia FROM tb_recebimento";
+        String sql = "SELECT id_usuario, valor, data, categoria, recorrencia FROM tb_recebimento";
 
         try (PreparedStatement stm = conexao.prepareStatement(sql);
              ResultSet rs = stm.executeQuery()) {
 
             while (rs.next()) {
-                int id = rs.getInt("id_recebimento");
                 int usuario = rs.getInt("id_recebimento");
                 double valor = rs.getDouble("valor");
                 String data = rs.getString("data");
                 String categoria = rs.getString("categoria");
                 String recorrencia = rs.getString("recorrencia");
 
-                Recebimento recebimento = new Recebimento(id, usuario, valor, data, categoria, recorrencia);
+                Recebimento recebimento = new Recebimento(usuario, valor, data, categoria, recorrencia);
                 recebimentos.add(recebimento);
             }
         }

@@ -19,7 +19,7 @@ public class GastoDao {
 
     // Método para cadastrar um gasto
     public void cadastrar(Gasto gasto) throws SQLException {
-        String sql = "INSERT INTO tb_gasto (id_gasto, id_usuario, valor, data, categoria, recorrencia) VALUES (?, ?, TO_DATE(?, 'YYYY-MM-DD'), ?, ?)";
+        String sql = "INSERT INTO tb_gasto (id_usuario, valor, data, categoria, recorrencia) VALUES (?, ?, TO_DATE(?, 'YYYY-MM-DD'), ?, ?)";
 
         try (PreparedStatement stm = conexao.prepareStatement(sql)) {
 
@@ -40,20 +40,19 @@ public class GastoDao {
     // Implementação do método listar para buscar todos os gastos
     public List<Gasto> listar() throws SQLException {
         List<Gasto> gastos = new ArrayList<>();
-        String sql = "SELECT id_gasto, id_usuario, valor, data, categoria, recorrencia FROM tb_gasto";
+        String sql = "SELECT id_usuario, valor, data, categoria, recorrencia FROM tb_gasto";
 
         try (PreparedStatement stm = conexao.prepareStatement(sql);
              ResultSet rs = stm.executeQuery()) {
 
             while (rs.next()) {
-                int id = rs.getInt("id_gasto");
                 int usuario = rs.getInt("id_usuario");
                 double valor = rs.getDouble("valor");
                 String data = rs.getString("data");
                 String categoria = rs.getString("categoria");
                 String recorrencia = rs.getString("recorrencia");
 
-                Gasto gasto = new Gasto(id, usuario, valor, data, categoria, recorrencia);
+                Gasto gasto = new Gasto(usuario, valor, data, categoria, recorrencia);
                 gastos.add(gasto);
             }
         }

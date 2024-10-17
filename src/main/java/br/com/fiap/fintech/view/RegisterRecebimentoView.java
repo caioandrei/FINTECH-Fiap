@@ -47,7 +47,6 @@ public class RegisterRecebimentoView {
             } else {
                 System.out.println("Recebimentos cadastrados:");
                 for (Recebimento recebimento : recebimentos) {
-                    System.out.println("ID: " + recebimento.getIdRecebimento());
                     System.out.println("ID Usuário: " + recebimento.getIdUsuario());
                     System.out.println("Valor: " + recebimento.getValor());
                     System.out.println("Data: " + recebimento.getData());

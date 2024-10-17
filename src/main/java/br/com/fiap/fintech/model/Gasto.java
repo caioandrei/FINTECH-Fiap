@@ -1,7 +1,6 @@
 package br.com.fiap.fintech.model;
 
 public class Gasto {
-    private int idGasto;
     private int idUsuario;
     private double valor;
     private String data;
@@ -9,8 +8,7 @@ public class Gasto {
     private String recorrencia;
 
     // Construtor
-    public Gasto(int idGasto, int idUsuario, double valor, String data, String categoria, String recorrencia) {
-        this.idGasto = idGasto;
+    public Gasto(int idUsuario, double valor, String data, String categoria, String recorrencia) {
         this.idUsuario = idUsuario;
         this.valor = valor;
         this.data = data;
@@ -19,21 +17,11 @@ public class Gasto {
     }
 
     // Construtor sem 'ID' para Cadastro de Gastos
-    public Gasto(int idGasto, double valor, String data, String categoria, String recorrencia) {
-        this.idGasto = idGasto;
+    public Gasto(double valor, String data, String categoria, String recorrencia) {
         this.valor = valor;
         this.data = data;
         this.categoria = categoria;
         this.recorrencia = recorrencia;
-    }
-
-    // Getters e Setters
-    public int getIdGasto() {
-        return idGasto;
-    }
-
-    public void setIdGasto(int idGasto) {
-        this.idGasto = idGasto;
     }
 
     public int getIdUsuario() {

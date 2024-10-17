@@ -2,7 +2,6 @@ package br.com.fiap.fintech.model;
 
 public class Recebimento {
 
-    private int idRecebimento;
     private int idUsuario;
     private double valor;
     private String data;
@@ -10,16 +9,6 @@ public class Recebimento {
     private String recorrencia;
 
     // Construtor
-    public Recebimento(int idGasto, int idUsuario, double valor, String data, String categoria, String recorrencia) {
-        this.idRecebimento = idGasto;
-        this.idUsuario = idUsuario;
-        this.valor = valor;
-        this.data = data;
-        this.categoria = categoria;
-        this.recorrencia = recorrencia;
-    }
-
-    // Construtor sem 'ID' para Cadastro de Recebimentos
     public Recebimento(int idUsuario, double valor, String data, String categoria, String recorrencia) {
         this.idUsuario = idUsuario;
         this.valor = valor;
@@ -28,13 +17,12 @@ public class Recebimento {
         this.recorrencia = recorrencia;
     }
 
-    // Getters e Setters
-    public int getIdRecebimento() {
-        return idRecebimento;
-    }
-
-    public void setIdRecebimento(int idRecebimento) {
-        this.idRecebimento = idRecebimento;
+    // Construtor sem 'ID' para Cadastro de Recebimentos
+    public Recebimento(double valor, String data, String categoria, String recorrencia) {
+        this.valor = valor;
+        this.data = data;
+        this.categoria = categoria;
+        this.recorrencia = recorrencia;
     }
 
     public int getIdUsuario() {
