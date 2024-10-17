@@ -45,7 +45,7 @@ public class RecebimentoDao {
              ResultSet rs = stm.executeQuery()) {
 
             while (rs.next()) {
-                int usuario = rs.getInt("id_recebimento");
+                int usuario = rs.getInt("id_usuario");
                 double valor = rs.getDouble("valor");
                 String data = rs.getString("data");
                 String categoria = rs.getString("categoria");

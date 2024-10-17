@@ -50,6 +50,8 @@ public class RegisterGastoView {
                     System.out.println("ID Usuário: " + gasto.getIdUsuario());
                     System.out.println("Valor: " + gasto.getValor());
                     System.out.println("Data: " + gasto.getData());
+                    System.out.println("Categoria: " + gasto.getCategoria());
+                    System.out.println("Recorrência: " + gasto.getRecorrencia());
                     System.out.println("-----------------------------");
                 }
             }

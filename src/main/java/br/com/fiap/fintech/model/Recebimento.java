@@ -18,7 +18,7 @@ public class Recebimento {
     }
 
     // Construtor sem 'ID' para Cadastro de Recebimentos
-    public Recebimento(double valor, String data, String categoria, String recorrencia) {
+    public Recebimento( double valor, String data, String categoria, String recorrencia) {
         this.valor = valor;
         this.data = data;
         this.categoria = categoria;
